@@ -25,5 +25,5 @@ steps:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Visual Studio Enterprise Subscription – MPN(90964ca6-bc75-4398-9fa2-75c890c373cf)'
     appType: 'webApp'
-    WebAppName: 'cardio-app-2'
+    WebAppName: 'cardio-app'
     packageForLinux: '$(System.DefaultWorkingDirectory)/build'
