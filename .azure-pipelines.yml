@@ -6,24 +6,24 @@
 trigger:
   - master
   
-  pool:
-    vmImage: ubuntu-latest
-  
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '14.x'
-    displayName: 'Install Node.js'
-  
-  - script: |
-      npm install
-      npm run build
-    displayName: 'npm install and build'
-  
-  - task: AzureRmWebAppDeployment@4
-    inputs:
-      ConnectionType: 'AzureRM'
-      azureSubscription: 'Visual Studio Enterprise Subscription – MPN(90964ca6-bc75-4398-9fa2-75c890c373cf)'
-      appType: 'webAppLinux'
-      WebAppName: 'cardio-app'
-      packageForLinux: '$(System.DefaultWorkingDirectory)/build/*'
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install and build'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Visual Studio Enterprise Subscription – MPN(90964ca6-bc75-4398-9fa2-75c890c373cf)'
+    appType: 'webAppLinux'
+    WebAppName: 'cardio-app'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/build/*'
